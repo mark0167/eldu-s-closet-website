@@ -1,5 +1,5 @@
 
-// Eldu's Closet Website Script
+// Eldu's Closet V2 Script
 
 
 // Mobile Menu
@@ -15,18 +15,17 @@ nav.classList.toggle("active");
 
 
 
-// Close menu after clicking a link
+
+// Close menu after clicking links
 
 document.querySelectorAll("nav a").forEach(link=>{
 
 
 link.addEventListener("click",()=>{
 
-
 document.getElementById("nav")
 .classList.remove("active");
 
-
 });
 
 
@@ -38,15 +37,17 @@ document.getElementById("nav")
 
 
 
-// Scroll Animation
 
-const animatedElements = document.querySelectorAll(
-"section, .card, .steps div, .features div"
+// Scroll Reveal Animation
+
+
+const items = document.querySelectorAll(
+".category, .products div, .features div, .steps p"
 );
 
 
 
-animatedElements.forEach(item=>{
+items.forEach(item=>{
 
 item.style.opacity="0";
 
@@ -60,10 +61,11 @@ item.style.transition="all .8s ease";
 
 
 
-function reveal(){
+
+function revealItems(){
 
 
-animatedElements.forEach(item=>{
+items.forEach(item=>{
 
 
 const position =
@@ -88,13 +90,15 @@ item.style.transform="translateY(0)";
 
 
 
+
 window.addEventListener(
 "scroll",
-reveal
+revealItems
 );
 
 
-reveal();
+
+revealItems();
 
 
 
@@ -102,19 +106,21 @@ reveal();
 
 
 
-// Current Year Footer
+
+// Update Footer Year
 
 const year =
 new Date().getFullYear();
 
 
-const footerText =
+const footer =
 document.querySelector("footer p:last-child");
 
 
-if(footerText){
 
-footerText.textContent =
+if(footer){
+
+footer.textContent =
 "© " + year + " Eldu's Closet";
 
 }
