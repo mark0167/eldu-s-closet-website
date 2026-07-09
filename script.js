@@ -1,5 +1,5 @@
 
-// Eldu's Closet V2 Script
+// Eldu's Closet V3 Script
 
 
 // Mobile Menu
@@ -15,11 +15,9 @@ nav.classList.toggle("active");
 
 
 
-
-// Close menu after clicking links
+// Close mobile menu after clicking
 
 document.querySelectorAll("nav a").forEach(link=>{
-
 
 link.addEventListener("click",()=>{
 
@@ -28,9 +26,7 @@ document.getElementById("nav")
 
 });
 
-
 });
-
 
 
 
@@ -40,14 +36,13 @@ document.getElementById("nav")
 
 // Scroll Reveal Animation
 
-
-const items = document.querySelectorAll(
-".category, .products div, .features div, .steps p"
+const revealItems = document.querySelectorAll(
+".category, .product-card, .features div, .steps div, .gallery img"
 );
 
 
 
-items.forEach(item=>{
+revealItems.forEach(item=>{
 
 item.style.opacity="0";
 
@@ -61,18 +56,17 @@ item.style.transition="all .8s ease";
 
 
 
-
-function revealItems(){
-
-
-items.forEach(item=>{
+function reveal(){
 
 
-const position =
+revealItems.forEach(item=>{
+
+
+const top =
 item.getBoundingClientRect().top;
 
 
-if(position < window.innerHeight - 80){
+if(top < window.innerHeight - 80){
 
 
 item.style.opacity="1";
@@ -93,12 +87,12 @@ item.style.transform="translateY(0)";
 
 window.addEventListener(
 "scroll",
-revealItems
+reveal
 );
 
 
 
-revealItems();
+reveal();
 
 
 
@@ -111,6 +105,7 @@ revealItems();
 
 const year =
 new Date().getFullYear();
+
 
 
 const footer =
