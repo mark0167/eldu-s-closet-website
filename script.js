@@ -1,8 +1,7 @@
+// Eldu's Closet V4 Script
 
-// Eldu's Closet V3 Script
 
-
-// Mobile Menu
+// Mobile Navigation
 
 function toggleMenu(){
 
@@ -15,14 +14,15 @@ nav.classList.toggle("active");
 
 
 
-// Close mobile menu after clicking
+// Close menu after selecting a page
 
 document.querySelectorAll("nav a").forEach(link=>{
 
 link.addEventListener("click",()=>{
 
-document.getElementById("nav")
-.classList.remove("active");
+const nav = document.getElementById("nav");
+
+nav.classList.remove("active");
 
 });
 
@@ -34,21 +34,22 @@ document.getElementById("nav")
 
 
 
-// Scroll Reveal Animation
 
-const revealItems = document.querySelectorAll(
-".category, .product-card, .features div, .steps div, .gallery img"
+// Scroll Animation
+
+const elements = document.querySelectorAll(
+".category, .product-card, .features div, .steps div, .community"
 );
 
 
 
-revealItems.forEach(item=>{
+elements.forEach(element=>{
 
-item.style.opacity="0";
+element.style.opacity="0";
 
-item.style.transform="translateY(40px)";
+element.style.transform="translateY(40px)";
 
-item.style.transition="all .8s ease";
+element.style.transition="all .8s ease";
 
 });
 
@@ -56,22 +57,22 @@ item.style.transition="all .8s ease";
 
 
 
-function reveal(){
+function showElements(){
 
 
-revealItems.forEach(item=>{
+elements.forEach(element=>{
 
 
-const top =
-item.getBoundingClientRect().top;
+const position =
+element.getBoundingClientRect().top;
 
 
-if(top < window.innerHeight - 80){
+if(position < window.innerHeight - 80){
 
 
-item.style.opacity="1";
+element.style.opacity="1";
 
-item.style.transform="translateY(0)";
+element.style.transform="translateY(0)";
 
 
 }
@@ -81,19 +82,16 @@ item.style.transform="translateY(0)";
 
 
 }
-
 
 
 
 window.addEventListener(
 "scroll",
-reveal
+showElements
 );
 
 
-
-reveal();
-
+showElements();
 
 
 
@@ -101,16 +99,14 @@ reveal();
 
 
 
-// Update Footer Year
 
-const year =
-new Date().getFullYear();
+// Update copyright year
 
+const year = new Date().getFullYear();
 
 
 const footer =
 document.querySelector("footer p:last-child");
-
 
 
 if(footer){
